@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNet.Identity
+@using BugTracker.Models
+@model LoginViewModel
+
+@{
+    ViewBag.Title = "User Account Error";
+    if (Request.IsAuthenticated)
+    {
+        string UserID = User.Identity.GetUserId();
+    }
+    else
+    {
+
+    }
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="jumbotron">
+    <h2>You are currently logged in as:</h2>
+    <h1>@Unassigned</h1>
+    <h2>Contact your system administrator.</h2>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

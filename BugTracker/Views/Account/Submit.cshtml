@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNet.Identity
+@using BugTracker.Models
+@model SubmitViewModel
+@{
+    ViewBag.Title = "Submitter";
+
+    if (Request.IsAuthenticated)
+    {
+        string UserID = User.Identity.GetUserId();
+
+
+    }
+    else
+    {
+
+    }
+
+}
+
+<div class="jumbotron">
+    <h2>You are currently logged in as a:</h2>
+    <h1>@ViewBag.Title</h1>
+</div>
+<div class="row" style="margin-left:60px">
+    <h3>What would you like to do?</h3>
+    <div class="col-md-4">
+        <ul>
+            <li>@Html.ActionLink("Submit a Ticket", "SubmitTicket", "Account")</li>
+            <li>@Html.ActionLink("Track a Ticket", "TrackTicket", "Account")</li>
+            <li>@Html.ActionLink("Work Projects", "WorkProjects", "Project")</li>
+        </ul>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

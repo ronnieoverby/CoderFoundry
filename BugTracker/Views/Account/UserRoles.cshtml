@@ -1,0 +1,46 @@
+﻿@using BugTracker.Models
+@model BugTracker.Models.SelectUserRolesViewModel
+
+@{
+    ViewBag.Title = "Select Role Assignments for:";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("UserRoles", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.HiddenFor(model => model.UserName)
+        </div>
+    </div>
+    <h3>@(this.Model.FirstName + " " + this.Model.LastName)</h3>
+    <hr />
+
+        <table>
+            <tr>
+                <th>
+                    Select
+                </th>
+                <th>
+                    Role
+                </th>
+            </tr>
+            @Html.EditorFor(model => model.Roles)
+        </table>
+        <br />
+        <hr />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+        }
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

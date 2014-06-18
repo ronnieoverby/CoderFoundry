@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNet.Identity
+@using BugTracker.Models
+
+@model AdminViewModel
+@{
+    ViewBag.Title = "Administrator";
+}
+
+@using (Html.BeginForm())
+{ 
+    @Html.AntiForgeryToken()
+    
+    <div class="jumbotron">
+        <h2>You are currently logged in as an:</h2>
+        <h1>@ViewBag.Title</h1>
+    </div>
+    <div class="row" style="margin-left:60px">
+        <h3>What would you like to do?</h3>
+        <div class="col-md-4">
+            <ul>
+                <li>@Html.ActionLink("Manage/Create Users", "AdminUsers", "Account")</li>
+                <li>@Html.ActionLink("Manage/Create Projects", "AdminProjects", "Projects")</li>
+            </ul>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
